@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokales E-Mail-System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h2>📬 MiniMail</h2>
+        <div>
+            <label for="userSelect">Aktueller Nutzer: </label>
+            <select id="userSelect" onchange="switchUser()">
+                <option value="personA@mail.de">Person A (personA@mail.de)</option>
+                <option value="personB@mail.de">Person B (personB@mail.de)</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Linker Bereich: Formular & Posteingang -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="card">
+                <h3>E-Mail schreiben</h3>
+                <form id="mailForm" onsubmit="sendMail(event)">
+                    <div class="form-group">
+                        <label for="mailTo">An (E-Mail-Adresse):</label>
+                        <input type="email" id="mailTo" required placeholder="z.B. personB@mail.de">
+                    </div>
+                    <div class="form-group">
+                        <label for="mailSubject">Betreff:</label>
+                        <input type="text" id="mailSubject" required placeholder="Thema eingeben...">
+                    </div>
+                    <div class="form-group">
+                        <label for="mailBody">Nachricht:</label>
+                        <textarea id="mailBody" required placeholder="Deine Nachricht..."></textarea>
+                    </div>
+                    <button type="submit">Senden</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Posteingang</h3>
+                <ul id="emailList" class="email-list"></ul>
+            </div>
+        </div>
+
+        <!-- Rechter Bereich: E-Mail Detailansicht -->
+        <div class="card">
+            <h3>Nachrichten-Details</h3>
+            <div id="emailViewer">
+                <div class="empty-state">Wähle eine E-Mail aus dem Posteingang aus.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
